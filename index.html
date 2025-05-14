@@ -82,75 +82,65 @@
     </div>
 
     <script>
-        // Lijst van vragen
-        const vragen = [
-            "Wat vind je fijn aan deze plek?",
-            "Kom je hier uit de buurt?",
-            "Hoe gebruik je deze plek? (bewegen, ontstressen, ontmoeten, anders)",
-            "Wat vind je minder fijn aan deze plek?",
-            "Zou je meer natuur willen zien op deze plek?",
-            "Wat zou je graag veranderen aan deze plek?",
-            "Wat betekent deze plek voor jou?",
-            "Heb je een favoriete activiteit die je hier doet?",
-            "Waarom kom je naar deze plek?",
-            "Wat voor invloed heeft deze plek op je welzijn?",
-            "Wat zou je mensen aanraden om hier te doen?",
-            "Wat maakt deze plek speciaal?",
-            "Hoe voel je je als je hier bent?",
-            "Wist je al veel over de geschiedenis van deze plek?",
-            "Is er iets dat je mist op deze plek?",
-            "Wat zou je toevoegen aan deze plek?",
-            "Vind je het belangrijk om plekken zoals deze te behouden?",
-            "Hoe zou je deze plek toegankelijker maken voor anderen?",
-            "Hoe kun je bijdragen aan het behoud van deze plek?"
-        ];
+    const vragen = [
+        "Wat vind je fijn aan deze plek?",
+        "Kom je hier uit de buurt?",
+        "Hoe gebruik je deze plek? (bewegen, ontstressen, ontmoeten, anders)",
+        "Wat vind je minder fijn aan deze plek?",
+        "Zou je meer natuur willen zien op deze plek?",
+        "Wat zou je graag veranderen aan deze plek?",
+        "Wat betekent deze plek voor jou?",
+        "Heb je een favoriete activiteit die je hier doet?",
+        "Waarom kom je naar deze plek?",
+        "Wat voor invloed heeft deze plek op je welzijn?",
+        "Wat zou je mensen aanraden om hier te doen?",
+        "Wat maakt deze plek speciaal?",
+        "Hoe voel je je als je hier bent?",
+        "Wist je al veel over de geschiedenis van deze plek?",
+        "Is er iets dat je mist op deze plek?",
+        "Wat zou je toevoegen aan deze plek?",
+        "Vind je het belangrijk om plekken zoals deze te behouden?",
+        "Hoe zou je deze plek toegankelijker maken voor anderen?",
+        "Hoe kun je bijdragen aan het behoud van deze plek?"
+    ];
 
-        // Lijst van weetjes
-        const weetjes = [
-            "Wist je dat stadsparken kunnen bijdragen aan het verlagen van stress met wel 30%?",
-            "Wist je dat een uitbreiding van stedelijk groen met 30% kan zorgen voor een verkoeling van gemiddeld 0,5°C?",
-            "Wist je dat bomen in steden jaarlijks duizenden liters regenwater opvangen en zo wateroverlast helpen voorkomen?",
-            "Wist je dat groen in de stad de temperatuur in de zomer met 2 tot 4 graden kan verlagen — dat is een natuurlijke airco!",
-            "Wist je dat kinderen 2x zoveel buiten spelen in buurten met toegankelijke groene speelplekken?",
-            "Wist je dat groene ruimtes de luchtkwaliteit verbeteren door CO₂ op te nemen en fijnstof te filteren?",
-            "Wist je dat kijken naar natuur al binnen een paar minuten je hartslag kan verlagen?",
-            "Wist je dat er in Nederland af en toe wasberen in het wild worden gespot? Ze zijn hier ooit als huisdieren geïntroduceerd, maar horen eigenlijk niet thuis in onze natuur.",
-            "Wist je dat in 1567 de man met de langste baard ter wereld overleed nadat hij over zijn baard struikelde toen hij wegrende voor een brand?",
-            "Wist je dat er in 2015 meer mensen stierven door het maken van een selfie dan door aanvallen van haaien?",
-            "Wist je dat de zonsopgangen op Mars blauw zijn?",
-            "Wist je dat Anatidaephobia echt bestaat? Het is de angst dat er een eend naar je staart kijkt.",
-            "Wist je dat vlinders proeven met hun voeten? Ja, je wist niet dat vlinders voeten hebben, hè?",
-            "Wist je dat bijna 3% van het ijs in gletsjers op Antarctica bestaat uit pinguïnurine?",
-            "Wist je dat het grootste deel van het stof in je huis gemaakt is van dode huidcellen?",
-            "Wist je dat als je alle online privacyverklaringen waar je in een jaar akkoord mee gaat zou lezen, je 76 werkdagen bezig bent?",
-            "Wist je dat als je in drijfzand terechtkomt, je langzaam je benen moet optrekken en dan uitgestrekt op je rug moet gaan liggen?",
-            "Wist je dat in een mensenlichaam elke dag tussen de 50 en 70 miljard cellen sterven? In zeven jaar komt dat neer op een volledig lichaam.",
-            "Wist je dat Hippopotomonstrosesquippedaliophobia de angst voor lange woorden is?"
-        ];
+    const weetjes = [
+        "Wist je dat stadsparken kunnen bijdragen aan het verlagen van stress met wel 30%?",
+        "Wist je dat een uitbreiding van stedelijk groen met 30% kan zorgen voor een verkoeling van gemiddeld 0,5°C?",
+        "Wist je dat bomen in steden jaarlijks duizenden liters regenwater opvangen en zo wateroverlast helpen voorkomen?",
+        "Wist je dat groen in de stad de temperatuur in de zomer met 2 tot 4 graden kan verlagen — dat is een natuurlijke airco!",
+        "Wist je dat kinderen 2x zoveel buiten spelen in buurten met toegankelijke groene speelplekken?",
+        "Wist je dat groene ruimtes de luchtkwaliteit verbeteren door CO₂ op te nemen en fijnstof te filteren?",
+        "Wist je dat kijken naar natuur al binnen een paar minuten je hartslag kan verlagen?",
+        "Wist je dat er in Nederland af en toe wasberen in het wild worden gespot? Ze zijn hier ooit als huisdieren geïntroduceerd, maar horen eigenlijk niet thuis in onze natuur.",
+        "Wist je dat in 1567 de man met de langste baard ter wereld overleed nadat hij over zijn baard struikelde toen hij wegrende voor een brand?",
+        "Wist je dat er in 2015 meer mensen stierven door het maken van een selfie dan door aanvallen van haaien?",
+        "Wist je dat de zonsopgangen op Mars blauw zijn?",
+        "Wist je dat Anatidaephobia echt bestaat? Het is de angst dat er een eend naar je staart kijkt.",
+        "Wist je dat vlinders proeven met hun voeten? Ja, je wist niet dat vlinders voeten hebben, hè?",
+        "Wist je dat bijna 3% van het ijs in gletsjers op Antarctica bestaat uit pinguïnurine?",
+        "Wist je dat het grootste deel van het stof in je huis gemaakt is van dode huidcellen?",
+        "Wist je dat als je alle online privacyverklaringen waar je in een jaar akkoord mee gaat zou lezen, je 76 werkdagen bezig bent?",
+        "Wist je dat als je in drijfzand terechtkomt, je langzaam je benen moet optrekken en dan uitgestrekt op je rug moet gaan liggen?",
+        "Wist je dat in een mensenlichaam elke dag tussen de 50 en 70 miljard cellen sterven? In zeven jaar komt dat neer op een volledig lichaam.",
+        "Wist je dat Hippopotomonstrosesquippedaliophobia de angst voor lange woorden is?"
+    ];
 
-const vraagElement = document.getElementById("vraag");
+    const vraagElement = document.getElementById("vraag");
     const weetjeElement = document.getElementById("weetje");
-    const form = document.querySelector("form");
     const vraagBox = document.querySelector(".vraag-box");
-    const submitBtn = document.querySelector(".submit-btn");
     const antwoordInput = document.getElementById("antwoord");
+    const submitBtn = document.querySelector(".submit-btn");
 
-    // Random vraag en weetje kiezen
     const index = Math.floor(Math.random() * vragen.length);
     vraagElement.innerText = vragen[index];
-    weetjeElement.innerText = "";
 
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Laat alleen het weetje zien
+    function toonWeetje() {
         vraagBox.classList.add("hidden");
-        antwoordInput.classList.add("hidden");
-        submitBtn.classList.add("hidden");
-
         weetjeElement.innerText = weetjes[index];
-    });
-    </script>
+    }
+</script>
+
 </body>
 </html>
 
