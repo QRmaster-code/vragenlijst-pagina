@@ -5,40 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vraag en Weetje</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://images.unsplash.com/photo-1508766206392-8bd5cf550d1c?auto=format&fit=crop&w=1500&q=80');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
+    .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        max-width: 600px;
+        text-align: center;
+    }
 
-        .vraag-box {
-            margin-bottom: 20px;
-        }
+    .vraag-box {
+        margin-bottom: 20px;
+        font-size: 18px;
+    }
 
-        #weetje {
-            font-style: italic;
-            color: green;
-            margin-top: 20px;
-        }
+    #weetje {
+        font-style: italic;
+        color: #2e7d32;
+        margin-top: 20px;
+    }
 
-        .submit-btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    .submit-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 6px;
+    }
 
-        .submit-btn:hover {
-            background-color: #45a049;
-        }
-    </style>
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+</style>
+
 </head>
 <body>
     <div class="container">
