@@ -35,9 +35,9 @@
 
     #weetje {
         font-style: italic;
-        color: #2e7d32;
+        color: #006400;
         margin-top: 20px;
-        font-size: 18px;
+        font-size: 22px;
     }
 
     .submit-btn {
@@ -73,6 +73,11 @@
     border-radius: 6px;
     border: 1px solid #ccc;
 }
+     #weetje {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
 
 </style>
 
@@ -148,14 +153,11 @@
     antwoordInput.classList.add("hidden");
     submitBtn.classList.add("hidden");
 
-    weetjeElement.innerText = weetjes[index];
-    weetjeElement.style.opacity = 0;
-    weetjeElement.style.transition = "opacity 1.2s ease";
+ weetjeElement.innerText = weetjes[index];
+setTimeout(() => {
+    weetjeElement.style.opacity = 1;
+}, 100);
 
-    // Kleine vertraging om het fade-in effect te activeren
-    setTimeout(() => {
-        weetjeElement.style.opacity = 1;
-    }, 100);
 }
 
 </script>
