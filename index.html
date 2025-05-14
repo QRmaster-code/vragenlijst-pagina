@@ -143,10 +143,21 @@
     const index = Math.floor(Math.random() * vragen.length);
     vraagElement.innerText = vragen[index];
 
-    function toonWeetje() {
-        vraagBox.classList.add("hidden");
-        weetjeElement.innerText = weetjes[index];
-    }
+  function toonWeetje() {
+    vraagBox.classList.add("hidden");
+    antwoordInput.classList.add("hidden");
+    submitBtn.classList.add("hidden");
+
+    weetjeElement.innerText = weetjes[index];
+    weetjeElement.style.opacity = 0;
+    weetjeElement.style.transition = "opacity 1.2s ease";
+
+    // Kleine vertraging om het fade-in effect te activeren
+    setTimeout(() => {
+        weetjeElement.style.opacity = 1;
+    }, 100);
+}
+
 </script>
 
 </body>
