@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vraag en Weetje</title>
-    <style>
+ <style>
     body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-image: url('https://images.unsplash.com/photo-1508766206392-8bd5cf550d1c?auto=format&fit=crop&w=1500&q=80');
+        background-image: url('https://images.unsplash.com/photo-1570744746574-2a66d17c6c02?auto=format&fit=crop&w=1500&q=80');
         background-size: cover;
         background-position: center;
         height: 100vh;
@@ -37,6 +37,7 @@
         font-style: italic;
         color: #2e7d32;
         margin-top: 20px;
+        font-size: 18px;
     }
 
     .submit-btn {
@@ -59,9 +60,14 @@
         margin-top: 10px;
         border: 1px solid #ccc;
         border-radius: 6px;
-        font-size: 16px;
+        font-size: 18px;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>
+
 
 </head>
 <body>
@@ -122,19 +128,28 @@
             "Wist je dat Hippopotomonstrosesquippedaliophobia de angst voor lange woorden is?"
         ];
 
-        // Kies een willekeurige vraag
-        const randomVraag = vragen[Math.floor(Math.random() * vragen.length)];
+const vraagElement = document.getElementById("vraag");
+    const weetjeElement = document.getElementById("weetje");
+    const form = document.querySelector("form");
+    const vraagBox = document.querySelector(".vraag-box");
+    const submitBtn = document.querySelector(".submit-btn");
+    const antwoordInput = document.getElementById("antwoord");
 
-        // Toon de willekeurige vraag op de pagina
-        document.getElementById("vraag").innerText = randomVraag;
+    // Random vraag en weetje kiezen
+    const index = Math.floor(Math.random() * vragen.length);
+    vraagElement.innerText = vragen[index];
+    weetjeElement.innerText = "";
 
-        // Functie die een random weetje toont
-        function toonWeetje() {
-            // Kies een willekeurig weetje uit de array
-            const randomWeetje = weetjes[Math.floor(Math.random() * weetjes.length)];
-            // Toon het weetje op de pagina
-            document.getElementById('weetje').innerText = randomWeetje;
-        }
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Laat alleen het weetje zien
+        vraagBox.classList.add("hidden");
+        antwoordInput.classList.add("hidden");
+        submitBtn.classList.add("hidden");
+
+        weetjeElement.innerText = weetjes[index];
+    });
     </script>
 </body>
 </html>
