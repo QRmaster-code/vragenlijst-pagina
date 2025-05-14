@@ -4,164 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vraag en Weetje</title>
- <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-image: url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=1600&q=80');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .container {
-        background-color: rgba(255, 255, 255, 0.9);
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        width: 80%;
-        max-width: 600px;
-        text-align: center;
-    }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
 
-    .vraag-box {
-        margin-bottom: 20px;
-        font-size: 18px;
-    }
+        .vraag-box {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
 
-    #weetje {
-        font-style: italic;
-        color: #006400;
-        margin-top: 20px;
-        font-size: 22px;
-    }
+        #weetje {
+            font-style: italic;
+            color: #2e7d32;
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0;
+        }
 
-    .submit-btn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 6px;
-    }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 6px;
+        }
 
-    .submit-btn:hover {
-        background-color: #45a049;
-    }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
 
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 18px;
-    }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 18px;
+        }
 
-    .hidden {
-        display: none;
-    }
-     textarea {
-    font-size: 18px;
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-     #weetje {
-    opacity: 0;
-    transition: opacity 1.2s ease;
-}
-
-
-</style>
-
-
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="vraag-box">
             <h2 id="vraag"></h2>
-            <textarea id="antwoord" rows="4" cols="50"></textarea><br>
-            <button class="submit-btn" onclick="toonWeetje()">Verstuur antwoord</button>
+            <form action="https://formspree.io/f/xxxxx" method="POST" onsubmit="return toonWeetje(event)">
+                <textarea name="antwoord" id="antwoord" rows="4" cols="50" required></textarea><br>
+                <button type="submit" class="submit-btn">Verstuur antwoord</button>
+            </form>
         </div>
 
         <div id="weetje"></div>
     </div>
 
     <script>
-    const vragen = [
-        "Wat vind je fijn aan deze plek?",
-        "Kom je hier uit de buurt?",
-        "Hoe gebruik je deze plek? (bewegen, ontstressen, ontmoeten, anders)",
-        "Wat vind je minder fijn aan deze plek?",
-        "Zou je meer natuur willen zien op deze plek?",
-        "Wat zou je graag veranderen aan deze plek?",
-        "Wat betekent deze plek voor jou?",
-        "Heb je een favoriete activiteit die je hier doet?",
-        "Waarom kom je naar deze plek?",
-        "Wat voor invloed heeft deze plek op je welzijn?",
-        "Wat zou je mensen aanraden om hier te doen?",
-        "Wat maakt deze plek speciaal?",
-        "Hoe voel je je als je hier bent?",
-        "Wist je al veel over de geschiedenis van deze plek?",
-        "Is er iets dat je mist op deze plek?",
-        "Wat zou je toevoegen aan deze plek?",
-        "Vind je het belangrijk om plekken zoals deze te behouden?",
-        "Hoe zou je deze plek toegankelijker maken voor anderen?",
-        "Hoe kun je bijdragen aan het behoud van deze plek?"
-    ];
+        const vragen = [
+            "Wat vind je fijn aan deze plek?",
+            "Kom je hier uit de buurt?",
+            "Hoe gebruik je deze plek? (bewegen, ontstressen, ontmoeten, anders)",
+            "Wat vind je minder fijn aan deze plek?",
+            "Zou je meer natuur willen zien op deze plek?",
+            "Wat zou je graag veranderen aan deze plek?",
+            "Wat betekent deze plek voor jou?",
+            "Heb je een favoriete activiteit die je hier doet?",
+            "Waarom kom je naar deze plek?",
+            "Wat voor invloed heeft deze plek op je welzijn?",
+            "Wat zou je mensen aanraden om hier te doen?",
+            "Wat maakt deze plek speciaal?",
+            "Hoe voel je je als je hier bent?",
+            "Wist je al veel over de geschiedenis van deze plek?",
+            "Is er iets dat je mist op deze plek?",
+            "Wat zou je toevoegen aan deze plek?",
+            "Vind je het belangrijk om plekken zoals deze te behouden?",
+            "Hoe zou je deze plek toegankelijker maken voor anderen?",
+            "Hoe kun je bijdragen aan het behoud van deze plek?"
+        ];
 
-    const weetjes = [
-        "Wist je dat stadsparken kunnen bijdragen aan het verlagen van stress met wel 30%?",
-        "Wist je dat een uitbreiding van stedelijk groen met 30% kan zorgen voor een verkoeling van gemiddeld 0,5°C?",
-        "Wist je dat bomen in steden jaarlijks duizenden liters regenwater opvangen en zo wateroverlast helpen voorkomen?",
-        "Wist je dat groen in de stad de temperatuur in de zomer met 2 tot 4 graden kan verlagen — dat is een natuurlijke airco!",
-        "Wist je dat kinderen 2x zoveel buiten spelen in buurten met toegankelijke groene speelplekken?",
-        "Wist je dat groene ruimtes de luchtkwaliteit verbeteren door CO₂ op te nemen en fijnstof te filteren?",
-        "Wist je dat kijken naar natuur al binnen een paar minuten je hartslag kan verlagen?",
-        "Wist je dat er in Nederland af en toe wasberen in het wild worden gespot? Ze zijn hier ooit als huisdieren geïntroduceerd, maar horen eigenlijk niet thuis in onze natuur.",
-        "Wist je dat in 1567 de man met de langste baard ter wereld overleed nadat hij over zijn baard struikelde toen hij wegrende voor een brand?",
-        "Wist je dat er in 2015 meer mensen stierven door het maken van een selfie dan door aanvallen van haaien?",
-        "Wist je dat de zonsopgangen op Mars blauw zijn?",
-        "Wist je dat Anatidaephobia echt bestaat? Het is de angst dat er een eend naar je staart kijkt.",
-        "Wist je dat vlinders proeven met hun voeten? Ja, je wist niet dat vlinders voeten hebben, hè?",
-        "Wist je dat bijna 3% van het ijs in gletsjers op Antarctica bestaat uit pinguïnurine?",
-        "Wist je dat het grootste deel van het stof in je huis gemaakt is van dode huidcellen?",
-        "Wist je dat als je alle online privacyverklaringen waar je in een jaar akkoord mee gaat zou lezen, je 76 werkdagen bezig bent?",
-        "Wist je dat als je in drijfzand terechtkomt, je langzaam je benen moet optrekken en dan uitgestrekt op je rug moet gaan liggen?",
-        "Wist je dat in een mensenlichaam elke dag tussen de 50 en 70 miljard cellen sterven? In zeven jaar komt dat neer op een volledig lichaam.",
-        "Wist je dat Hippopotomonstrosesquippedaliophobia de angst voor lange woorden is?"
-    ];
+        const weetjes = [
+            "Wist je dat stadsparken kunnen bijdragen aan het verlagen van stress met wel 30%?",
+            "Wist je dat een uitbreiding van stedelijk groen met 30% kan zorgen voor een verkoeling van gemiddeld 0,5°C?",
+            "Wist je dat bomen in steden jaarlijks duizenden liters regenwater opvangen en zo wateroverlast helpen voorkomen?",
+            "Wist je dat groen in de stad de temperatuur in de zomer met 2 tot 4 graden kan verlagen — dat is een natuurlijke airco!",
+            "Wist je dat kinderen 2x zoveel buiten spelen in buurten met toegankelijke groene speelplekken?",
+            "Wist je dat groene ruimtes de luchtkwaliteit verbeteren door CO₂ op te nemen en fijnstof te filteren?",
+            "Wist je dat kijken naar natuur al binnen een paar minuten je hartslag kan verlagen?",
+            "Wist je dat er in Nederland af en toe wasberen in het wild worden gespot? Ze zijn hier ooit als huisdieren geïntroduceerd, maar horen eigenlijk niet thuis in onze natuur.",
+            "Wist je dat in 1567 de man met de langste baard ter wereld overleed nadat hij over zijn baard struikelde toen hij wegrende voor een brand?",
+            "Wist je dat er in 2015 meer mensen stierven door het maken van een selfie dan door aanvallen van haaien?",
+            "Wist je dat de zonsopgangen op Mars blauw zijn?",
+            "Wist je dat Anatidaephobia echt bestaat? Het is de angst dat er een eend naar je staart kijkt.",
+            "Wist je dat vlinders proeven met hun voeten? Ja, je wist niet dat vlinders voeten hebben, hè?",
+            "Wist je dat bijna 3% van het ijs in gletsjers op Antarctica bestaat uit pinguïnurine?",
+            "Wist je dat het grootste deel van het stof in je huis gemaakt is van dode huidcellen?",
+            "Wist je dat als je alle online privacyverklaringen waar je in een jaar akkoord mee gaat zou lezen, je 76 werkdagen bezig bent?",
+            "Wist je dat als je in drijfzand terechtkomt, je langzaam je benen moet optrekken en dan uitgestrekt op je rug moet gaan liggen?",
+            "Wist je dat in een mensenlichaam elke dag tussen de 50 en 70 miljard cellen sterven? In zeven jaar komt dat neer op een volledig lichaam.",
+            "Wist je dat Hippopotomonstrosesquippedaliophobia de angst voor lange woorden is?"
+        ];
 
-    const vraagElement = document.getElementById("vraag");
-    const weetjeElement = document.getElementById("weetje");
-    const vraagBox = document.querySelector(".vraag-box");
-    const antwoordInput = document.getElementById("antwoord");
-    const submitBtn = document.querySelector(".submit-btn");
+        const vraagElement = document.getElementById("vraag");
+        const weetjeElement = document.getElementById("weetje");
+        const vraagBox = document.querySelector(".vraag-box");
+        const antwoordInput = document.getElementById("antwoord");
+        const submitBtn = document.querySelector(".submit-btn");
 
-    const index = Math.floor(Math.random() * vragen.length);
-    vraagElement.innerText = vragen[index];
+        const index = Math.floor(Math.random() * vragen.length);
+        vraagElement.innerText = vragen[index];
 
-  function toonWeetje() {
-    vraagBox.classList.add("hidden");
-    antwoordInput.classList.add("hidden");
-    submitBtn.classList.add("hidden");
+        function toonWeetje(event) {
+            // Voorkom dat het formulier wordt verzonden (standaardactie)
+            event.preventDefault();
 
- weetjeElement.innerText = weetjes[index];
-setTimeout(() => {
-    weetjeElement.style.opacity = 1;
-}, 100);
+            // Verberg vraag en antwoordinvoer
+            vraagBox.classList.add("hidden");
+            antwoordInput.classList.add("hidden");
+            submitBtn.classList.add("hidden");
 
-}
+            // Toon het weetje met een fade-in effect
+            weetjeElement.innerText = weetjes[index];
+            weetjeElement.style.opacity = 0;
+            weetjeElement.style.transition = "opacity 1.2s ease";
 
-</script>
+            setTimeout(() => {
+                weetjeElement.style.opacity = 1;
+            }, 100);
 
+            // Stuur formulier naar Formspree
+            event.target.submit();
+        }
+    </script>
 </body>
 </html>
 
