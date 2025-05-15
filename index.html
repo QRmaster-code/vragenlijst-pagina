@@ -73,7 +73,7 @@
     <div class="container">
         <div class="vraag-box">
             <h2 id="vraag"></h2>
-            <form action="https://formspree.io/f/xgvkrwke" method="POST" onsubmit="return toonWeetje(event)">
+            <form action="https://formspree.io/f/xgvkrwke" method="POST" onsubmit="toonWeetje()">
                 <textarea name="antwoord" id="antwoord" rows="4" cols="50" required></textarea><br>
                 <button type="submit" class="submit-btn">Verstuur antwoord</button>
             </form>
@@ -136,27 +136,23 @@
         const index = Math.floor(Math.random() * vragen.length);
         vraagElement.innerText = vragen[index];
 
-        function toonWeetje(event) {
-            // Voorkom dat het formulier wordt verzonden (standaardactie)
-            event.preventDefault();
+        function toonWeetje() {
+    // Verberg vraag en antwoordinvoer
+    vraagBox.classList.add("hidden");
+    antwoordInput.classList.add("hidden");
+    submitBtn.classList.add("hidden");
 
-            // Verberg vraag en antwoordinvoer
-            vraagBox.classList.add("hidden");
-            antwoordInput.classList.add("hidden");
-            submitBtn.classList.add("hidden");
+    // Toon het weetje
+    weetjeElement.innerText = weetjes[index];
+    weetjeElement.style.opacity = 0;
+    weetjeElement.style.transition = "opacity 1.2s ease";
+    setTimeout(() => {
+        weetjeElement.style.opacity = 1;
+    }, 100);
 
-            // Toon het weetje met een fade-in effect
-            weetjeElement.innerText = weetjes[index];
-            weetjeElement.style.opacity = 0;
-            weetjeElement.style.transition = "opacity 1.2s ease";
+    // Laat Formspree het formulier zelf verzenden
+}
 
-            setTimeout(() => {
-                weetjeElement.style.opacity = 1;
-            }, 100);
-
-            // Stuur formulier naar Formspree
-            event.target.submit();
-        }
     </script>
 </body>
 </html>
